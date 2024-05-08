@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Abstract/AbstractCodeFactory.h"
 #include "cpp/CppCodeFactory.h"
+#include "CSharp/CsharpCodeFactory.h"
 
 std::string generateProgram(std::shared_ptr<AbstractCodeFactory>& factory){
     using std::shared_ptr;
@@ -10,7 +11,7 @@ std::string generateProgram(std::shared_ptr<AbstractCodeFactory>& factory){
     shared_ptr<AbstractClassUnit> myClass = factory->createClass("MyClass");
     myClass->add(
         factory->createMethod("testFunc1", "void", 0),
-        AbstractClassUnit::PUBLIC
+        AbstractClassUnit::PRIVATE
     );
     myClass->add(
         factory->createMethod("testFunc3", "void", AbstractMethodUnit::STATIC),
@@ -22,7 +23,7 @@ std::string generateProgram(std::shared_ptr<AbstractCodeFactory>& factory){
             "void",
             AbstractMethodUnit::VIRTUAL | AbstractMethodUnit::CONST
         ),
-        AbstractClassUnit::PUBLIC
+        AbstractClassUnit::PROTECTED_INTERNAL
     );
     auto method = factory->createMethod( "testFunc4", "void", AbstractMethodUnit::STATIC );
     method->add(factory->createPrintMethod( R"(Hello, world!\n)" ) );
@@ -34,7 +35,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    std::shared_ptr<AbstractCodeFactory> factory = std::make_shared<CppCodeFactory>();
+    std::shared_ptr<AbstractCodeFactory> factory = std::make_shared<CsharpCodeFactory>();
     std::cout << generateProgram(factory) << std::endl;
 
     return a.exec();

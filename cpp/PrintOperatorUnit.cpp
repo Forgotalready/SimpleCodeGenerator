@@ -1,7 +1,7 @@
 #include "PrintOperatorUnit.h"
 
 PrintOperatorUnit::PrintOperatorUnit(const std::string &text)
-    : m_text(text){}
+    : AbstractPrintOperatorUnit(text){}
 
 std::string PrintOperatorUnit::compile(unsigned int level) const
 {

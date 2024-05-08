@@ -10,7 +10,11 @@ public:
     enum AccessModifier{
         PUBLIC,
         PROTECTED,
-        PRIVATE
+        PRIVATE,
+        PRIVATE_PROTECTED, // только для c#
+        FILE, // только для c#
+        INTERNAL, // только для c#
+        PROTECTED_INTERNAL // только для c#
     };
 
     AbstractClassUnit(const std::string &name);

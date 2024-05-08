@@ -10,6 +10,11 @@ SOURCES += \
         Abstract/AbstractClassUnit.cpp \
         Abstract/AbstractCodeFactory.cpp \
         Abstract/AbstractMethodUnit.cpp \
+        Abstract/AbstractPrintOperatorUnit.cpp \
+        CSharp/CsharpClassUnit.cpp \
+        CSharp/CsharpCodeFactory.cpp \
+        CSharp/CsharpMethodUnit.cpp \
+        CSharp/CsharpPrintUnit.cpp \
         Unit.cpp \
         cpp/Classunit.cpp \
         cpp/CppCodeFactory.cpp \
@@ -26,6 +31,11 @@ HEADERS += \
     Abstract/AbstractClassUnit.h \
     Abstract/AbstractCodeFactory.h \
     Abstract/AbstractMethodUnit.h \
+    Abstract/AbstractPrintOperatorUnit.h \
+    CSharp/CsharpClassUnit.h \
+    CSharp/CsharpCodeFactory.h \
+    CSharp/CsharpMethodUnit.h \
+    CSharp/CsharpPrintUnit.h \
     Unit.h \
     cpp/Classunit.h \
     cpp/CppCodeFactory.h \

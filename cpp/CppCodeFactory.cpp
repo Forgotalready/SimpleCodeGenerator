@@ -10,7 +10,7 @@ std::shared_ptr<AbstractMethodUnit> CppCodeFactory::createMethod(const std::stri
     return std::make_shared<MethodUnit>(name, returnType, flags);
 }
 
-std::shared_ptr<Unit> CppCodeFactory::createPrintMethod(const std::string &text)
+std::shared_ptr<AbstractPrintOperatorUnit> CppCodeFactory::createPrintMethod(const std::string &text)
 {
     return std::make_shared<PrintOperatorUnit>(text);
 }

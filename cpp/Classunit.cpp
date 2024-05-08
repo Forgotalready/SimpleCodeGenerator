@@ -1,6 +1,6 @@
 #include "Classunit.h"
 
-const std::vector<std::string> ClassUnit::ACCESS_MODIFIERS = {"public", "protected", "private"}; // Статическое поле класса должно быть проинициализровано вне него.
+const std::vector<std::string> ClassUnit::ACCESS_MODIFIERS = {"public", "protected", "private"}; // Статическое поле класса должно быть проинициализровано вне него. И вне заголовочного файла
 
 ClassUnit::ClassUnit(const std::string &name)
     :AbstractClassUnit(name){
@@ -12,6 +12,8 @@ void ClassUnit::add(const std::shared_ptr<Unit> &unit, Flags flags)
     int accessModifier = PRIVATE;
     if(flags < ACCESS_MODIFIERS.size()){
         accessModifier = flags;
+    }else{
+        qWarning("C++ does not support this modifier");
     }
 
     m_fields[accessModifier].push_back(unit);

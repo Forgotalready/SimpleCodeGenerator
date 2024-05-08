@@ -5,6 +5,7 @@
 #include <memory>
 #include "AbstractClassUnit.h"
 #include "AbstractMethodUnit.h"
+#include "AbstractPrintOperatorUnit.h"
 
 class AbstractCodeFactory
 {
@@ -15,7 +16,7 @@ public:
 
     virtual std::shared_ptr<AbstractClassUnit> createClass(const std::string& name) = 0;
     virtual std::shared_ptr<AbstractMethodUnit> createMethod(const std::string& name, const std::string& returnType, Flags flags) = 0;
-    virtual std::shared_ptr<Unit> createPrintMethod(const std::string& text) = 0;
+    virtual std::shared_ptr<AbstractPrintOperatorUnit> createPrintMethod(const std::string& text) = 0;
 };
 
 #endif // ABSTRACTCODEFACTORY_H
