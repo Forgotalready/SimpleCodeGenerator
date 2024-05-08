@@ -1,40 +1,41 @@
 #include <QCoreApplication>
 
-#include "Unit.h"
-#include "cpp/Classunit.h"
-#include "cpp/MethodUnit.h"
-#include "cpp/PrintOperatorUnit.h"
 #include <iostream>
+#include "Abstract/AbstractCodeFactory.h"
+#include "cpp/CppCodeFactory.h"
 
-std::string generateProgram(){
-    ClassUnit myClass("MyClass");
-    myClass.add(
-        std::make_shared<MethodUnit>("testFunc1", "void", 0),
-        ClassUnit::PUBLIC
+std::string generateProgram(std::shared_ptr<AbstractCodeFactory>& factory){
+    using std::shared_ptr;
+
+    shared_ptr<AbstractClassUnit> myClass = factory->createClass("MyClass");
+    myClass->add(
+        factory->createMethod("testFunc1", "void", 0),
+        AbstractClassUnit::PUBLIC
     );
-    myClass.add(
-        std::make_shared<MethodUnit>("testFunc3", "void", MethodUnit::STATIC),
-        ClassUnit::PRIVATE
+    myClass->add(
+        factory->createMethod("testFunc3", "void", AbstractMethodUnit::STATIC),
+        AbstractClassUnit::PRIVATE
     );
-    myClass.add(
-        std::make_shared< MethodUnit >(
+    myClass->add(
+        factory->createMethod(
             "testFunc3",
             "void",
-            MethodUnit::VIRTUAL | MethodUnit::CONST
+            AbstractMethodUnit::VIRTUAL | AbstractMethodUnit::CONST
         ),
-        ClassUnit::PUBLIC
+        AbstractClassUnit::PUBLIC
     );
-    auto method = std::make_shared< MethodUnit >( "testFunc4", "void", MethodUnit::STATIC );
-    method->add( std::make_shared< PrintOperatorUnit >( R"(Hello, world!\n)" ) );
-    myClass.add( method, ClassUnit::PROTECTED );
-    return myClass.compile();
+    auto method = factory->createMethod( "testFunc4", "void", AbstractMethodUnit::STATIC );
+    method->add(factory->createPrintMethod( R"(Hello, world!\n)" ) );
+    myClass->add( method, AbstractClassUnit::PROTECTED );
+    return myClass->compile();
 }
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    std::cout << generateProgram() << std::endl;
+    std::shared_ptr<AbstractCodeFactory> factory = std::make_shared<CppCodeFactory>();
+    std::cout << generateProgram(factory) << std::endl;
 
     return a.exec();
 }

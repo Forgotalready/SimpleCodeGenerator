@@ -11,7 +11,7 @@ public:
 
     virtual ~Unit() = default;
 
-    virtual void add(const std::shared_ptr<Unit>&, Flags);
+    virtual void add(const std::shared_ptr<Unit>&, Flags = 0);
 
     virtual std::string compile(unsigned int level = 0) const = 0;
 protected:

@@ -3,8 +3,8 @@
 const std::vector<std::string> ClassUnit::ACCESS_MODIFIERS = {"public", "protected", "private"}; // Статическое поле класса должно быть проинициализровано вне него.
 
 ClassUnit::ClassUnit(const std::string &name)
-    :m_name(name){
-    m_fields.resize(ACCESS_MODIFIERS.size());
+    :AbstractClassUnit(name){
+    AbstractClassUnit::m_fields.resize(ACCESS_MODIFIERS.size());
 }
 
 void ClassUnit::add(const std::shared_ptr<Unit> &unit, Flags flags)
