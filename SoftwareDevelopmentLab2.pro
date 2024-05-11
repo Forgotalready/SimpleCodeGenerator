@@ -15,6 +15,10 @@ SOURCES += \
         CSharp/CsharpCodeFactory.cpp \
         CSharp/CsharpMethodUnit.cpp \
         CSharp/CsharpPrintUnit.cpp \
+        Java/JavaClassUnit.cpp \
+        Java/JavaCodeFactory.cpp \
+        Java/JavaMethodUnit.cpp \
+        Java/JavaPrintOperator.cpp \
         Unit.cpp \
         cpp/Classunit.cpp \
         cpp/CppCodeFactory.cpp \
@@ -36,6 +40,10 @@ HEADERS += \
     CSharp/CsharpCodeFactory.h \
     CSharp/CsharpMethodUnit.h \
     CSharp/CsharpPrintUnit.h \
+    Java/JavaClassUnit.h \
+    Java/JavaCodeFactory.h \
+    Java/JavaMethodUnit.h \
+    Java/JavaPrintOperator.h \
     Unit.h \
     cpp/Classunit.h \
     cpp/CppCodeFactory.h \
