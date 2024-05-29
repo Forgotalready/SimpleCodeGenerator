@@ -9,6 +9,12 @@
 
 std::string generateProgram(std::shared_ptr<AbstractCodeFactory>& factory){
     using std::shared_ptr;
+    factory = nullptr;
+    Q_ASSERT_X(factory != nullptr, "In generateProgram", " , factory not initilize");
+    if(factory == nullptr){
+        qWarning("In generateProgram, factory not initilize");
+        return "";
+    }
 
     auto method = factory->createMethod( "testFunc4", "void", AbstractMethodUnit::STATIC );
     method->add(factory->createPrintMethod( R"(Hello, world!\n)" ) );
